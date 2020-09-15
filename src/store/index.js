@@ -31,6 +31,11 @@ export default new Vuex.Store({
     }
 
   },
+  getters: {
+      formatCount(state) {
+        return '当前状态为:'+state.count
+      }
+  },
   modules: {
   }
 })

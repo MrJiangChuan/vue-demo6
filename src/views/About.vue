@@ -13,11 +13,14 @@
     <input type="button" value="actions使用[带参]" @click="handler4"/><br>
     <input type="button" value="mapActions使用[不带参]" @click="asyncAdd"/>
     <input type="button" value="mapActions使用[带参]" @click="asynAddN(40)"/><br>
+    <h1>4、getters使用【两种方式】</h1>
+    <h3>store.count={{$store.getters.formatCount}}</h3>
+    <h3>{{formatCount}}</h3>
   </div>
 </template>
 
 <script>
-  import {mapState,mapMutations,mapActions} from 'vuex'
+  import {mapState,mapMutations,mapActions,mapGetters} from 'vuex'
   export default {
     name: 'About',
     data() {
@@ -26,7 +29,8 @@
       }
     },
     computed: {
-      ...mapState(['count'])
+      ...mapState(['count']),
+      ...mapGetters(['formatCount'])
     },
     methods: {
       handler1() {
