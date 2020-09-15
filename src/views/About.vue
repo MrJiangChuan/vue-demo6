@@ -8,11 +8,16 @@
     <input type="button" value="mutations使用[带参]" @click="handler2"/><br>
     <input type="button" value="mapMutations使用[不带参]" @click="add"/>
     <input type="button" value="mapMutations使用[带参]" @click="addN(5)"/>
+    <h1>3、actions使用【两种方式】</h1>
+    <input type="button" value="actions使用[不带参]" @click="handler3"/>
+    <input type="button" value="actions使用[带参]" @click="handler4"/><br>
+    <input type="button" value="mapActions使用[不带参]" @click="asyncAdd"/>
+    <input type="button" value="mapActions使用[带参]" @click="asynAddN(40)"/><br>
   </div>
 </template>
 
 <script>
-  import {mapState,mapMutations} from 'vuex'
+  import {mapState,mapMutations,mapActions} from 'vuex'
   export default {
     name: 'About',
     data() {
@@ -30,7 +35,14 @@
       handler2() {
         this.$store.commit('addN',10)
       },
-      ...mapMutations(['add','addN'])
+      ...mapMutations(['add','addN']),
+      handler3() {
+        this.$store.dispatch('asyncAdd')
+      },
+      handler4() {
+        this.$store.dispatch('asynAddN',30)
+      },
+      ...mapActions(['asyncAdd','asynAddN'])
     }
   }
 </script>
